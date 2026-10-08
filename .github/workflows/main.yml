@@ -14,16 +14,14 @@ jobs:
 
       - name: Check script exists
         run: |
-          test -f ./starter/password_expiry.sh
-
-      - name: Create test user
-        run: |
-          sudo useradd -m testuser
+          pwd
+          ls -la
+          test -f ./script.sh
 
       - name: Make script executable and run setup
         run: |
-          chmod +x ./starter/password_expiry.sh
-          sudo ./starter/password_expiry.sh testuser
+          chmod +x ./script.sh
+          sudo ./script.sh
 
       - name: Verify password expiry settings
         run: |
