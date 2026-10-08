@@ -8,4 +8,4 @@ fi
 chage -d 2025-01-01 "$1"
 chage -E 2026-12-31 "$1"
 chage -m 7 "$1"
-chage -M 90 "$1"
+chage -M 90 "$1
