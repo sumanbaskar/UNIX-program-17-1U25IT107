@@ -1,13 +1,12 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-    echo "Error: Username is required."
-    exit 1
+user="testuser"
+
+if ! id "$user" >/dev/null 2>&1; then
+    sudo useradd "$user"
 fi
 
-USERNAME="$1"
-
-chage -d 2025-01-01 "$USERNAME"
-chage -E 2026-12-31 "$USERNAME"
-chage -m 7 "$USERNAME"
-chage -M 90 "$USERNAME"
+sudo chage -d 2025-01-01 "$user"
+sudo chage -E 2026-12-31 "$user"
+sudo chage -m 7 "$user"
+sudo chage -M 90 "$user"
