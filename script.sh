@@ -1,11 +1,17 @@
 #!/bin/bash
 
+# Validate username
 if [ -z "$1" ]; then
-    echo "Usage: $0 <username>"
+    echo "Error: Username is required."
     exit 1
 fi
 
-chage -d 2025-01-01 "$1"
-chage -E 2026-12-31 "$1"
-chage -m 7 "$1"
-chage -M 90 "$1
+USERNAME="$1"
+
+# Configure password-aging settings
+chage -d 2025-01-01 "$USERNAME"
+chage -E 2026-12-31 "$USERNAME"
+chage -m 7 "$USERNAME"
+chage -M 90 "$USERNAME"
+
+echo "Password expiry settings configured for $USERNAME."
