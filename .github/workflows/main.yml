@@ -1,0 +1,37 @@
+name: Password Expiry Autograding
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check script exists
+        run: |
+          pwd
+          ls -la
+          test -f ./script.sh
+
+      - name: Make script executable and run setup
+        run: |
+          chmod +x ./script.sh
+          sudo ./script.sh
+
+      - name: Verify password expiry settings
+        run: |
+          sudo chage -l testuser
+
+      - name: Run autograding tests
+        uses: education/autograding-command-grader@v1
+        with:
+          test-name: Password Expiry Test
+          command: |
+            sudo chage -l testuser
+          timeout: 10
+          max-score: 10
