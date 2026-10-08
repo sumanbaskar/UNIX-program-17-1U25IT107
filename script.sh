@@ -5,9 +5,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-USERNAME="$1"
-
-chage -d 2025-01-01 "$USERNAME"
-chage -E 2026-12-31 "$USERNAME"
-chage -m 7 "$USERNAME"
-chage -M 90 "$USERNAME"
+chage -d 2025-01-01 "$1"
+chage -E 2026-12-31 "$1"
+chage -m 7 "$1"
+chage -M 90 "$1"
